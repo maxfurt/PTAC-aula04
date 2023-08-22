@@ -2,7 +2,7 @@
 import { useState } from "react";
 import handlerAcessUser from "./functions/handlerAcess"
 import { useRouter } from "next/navigation";
-import {ToastContainerl, toast} from "react-toastify"
+import {ToastContainer, toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Login() {
@@ -15,12 +15,20 @@ export default function Login() {
   const handlerLogin = async (e) => {
     e.preventDefault();
     try {
-      await handlerAcessUser(user);
+
+      const userAuth = await hadlerAcessUser(user)
+      if(userAuth.token ===undefined){
+        toast.error("erro no email ou senha")
+      }
+
       push('/pages/dashboard');
+
     } catch {
       refresh();
+      toast.error("erro na aplicação")
     }
   }
+
   return (
     <div>
       <h1>Login</h1>
@@ -37,6 +45,7 @@ export default function Login() {
         </input>
         <button>Entrar</button>
       </form>
+      <ToastContainer/>
     </div>
   )
 }
