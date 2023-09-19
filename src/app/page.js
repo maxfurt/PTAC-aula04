@@ -4,6 +4,7 @@ import handlerAcessUser from "./functions/handlerAcess"
 import { useRouter } from "next/navigation";
 import {ToastContainer, toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
+import styles from "../app/pages/register/register.module.css"
 
 export default function Login() {
   const [user, setUser] = useState({
@@ -22,7 +23,7 @@ export default function Login() {
       }
 
       push('/pages/dashboard');
-
+      localStorage.setItem('nome', userAuth.nome)
     } catch {
       refresh();
       toast.error("erro na aplicação")
@@ -31,19 +32,21 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 className={styles.title}>Login</h1>
       <form onSubmit={handlerLogin}>
-        <input
+      <input
+          className={styles.input}
           placeholder='E-mail'
           type="email"
-          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
-        </input>
+          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}
+        />
         <input
+          className={styles.input}
           placeholder='Senha'
           type='password'
-          onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
-        </input>
-        <button>Entrar</button>
+          onChange={(e) => { setUser({ ...user, password: e.target.value }) }}
+        />
+        <button className={styles.button}>Entrar</button>
       </form>
       <ToastContainer/>
     </div>
