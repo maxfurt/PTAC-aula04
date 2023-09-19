@@ -1,14 +1,31 @@
 'use client'
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {ToastContainer, toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function Register() {
-  
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const { refresh } = useRouter();
+
+  const handlerLogin = async (e) => {
+    e.preventDefault();
+    try {
+        toast.error("Usuario Registrado Com Sucesso")
+  }catch {
+      refresh();
+      toast.error("erro na aplicação")
+    }
+  }
+
   return (
     <div>
       <h1>Registrar</h1>
-      <form>
+      <form onSubmit={handlerLogin}>
         <input
           placeholder='E-mail'
           type="email"
