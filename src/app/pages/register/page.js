@@ -26,6 +26,11 @@ export default function Register() {
     <div>
       <h1>Registrar</h1>
       <form onSubmit={handlerLogin}>
+      <input
+          placeholder='Nome'
+          type="text"
+          onChange={(e) => { setUser({ ...user, text: e.target.value }) }}>
+        </input>
         <input
           placeholder='E-mail'
           type="email"
