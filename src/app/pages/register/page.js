@@ -14,7 +14,7 @@ export default function Register() {
   });
   const { refresh } = useRouter();
 
-  const handleRegister = async (e) => {
+  const handlerRegister = async (e) => {
     e.preventDefault();
     try {
         toast.error("Usuario Registrado Com Sucesso")
@@ -24,15 +24,36 @@ export default function Register() {
     }
   }
 
-  return (
+  return ( 
     <div className={styles.container}>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          <ul className={styles.ul}>
+            <li className={styles.li}>
+              <a href="/" className={styles.link}>
+                Home
+              </a>
+            </li>
+            <li className={styles.li}>
+              <a href="/pages/register" className={styles.link}>
+                Register
+              </a>
+            </li>
+            <li className={styles.li}>
+              <a href="/pages/alter" className={styles.link}>
+                Alterar
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
       <h1 className={styles.title}>Registrar</h1>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handlerRegister}>
         <input
           className={styles.input}
           placeholder='Nome'
           type="text"
-          onChange={(e) => { setUser({ ...user, name: e.target.value }) }}
+          onChange={(e) => { setUser({ ...user, text: e.target.value }) }}
         />
         <input
           className={styles.input}
