@@ -6,6 +6,13 @@ import styles from "./Dashboard.module.css";
 export default async function Dashboard() {
   let usuarios = getUsers();
 
+  const req = await fetch("https://aula-17-10-xi.vercel.app/users", {
+    cache: "no-cache"
+  
+  });
+
+  const users = await req.json();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
