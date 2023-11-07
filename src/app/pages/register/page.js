@@ -1,10 +1,11 @@
 'use client'
-
+import { postUser } from "@/app/functions/handlerAcessAPI";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {ToastContainer, toast} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import styles from "./Register.module.css";
+import { postUser } from "@/app/functions/handlerAcessAPI";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -12,12 +13,17 @@ export default function Register() {
     email: '',
     password: '',
   });
+
+  const {push} =useRouter();
   const { refresh } = useRouter();
+
 
   const handlerRegister = async (e) => {
     e.preventDefault();
     try {
+        await postUser(user)
         toast.error("Usuario Registrado Com Sucesso")
+        return push("/pages/dasboard")
   }catch {
       refresh();
       toast.error("erro na aplicação")

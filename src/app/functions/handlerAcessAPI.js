@@ -34,20 +34,3 @@ const postUser = async(user) =>{
 }
 
 export { getUsers, getUserAuthenticated, postUser };
-
-
-/*const getUserAuthenticated = (user) => {
-
-    let userAuth = {}
-
-    usuarios.map((usuario)=>{
-        if (usuario.email == user.email && usuario.password == user.password) {
-           userAuth = usuario
-   
-        }
-   }
-)
-
-    return userAuth
-}
-*/
