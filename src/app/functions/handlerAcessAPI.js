@@ -15,31 +15,25 @@ const getUserAuthenticated = async (user) =>{
     return userAuth;
 }
 
-const usuarios = [
-{
-        nome:"nomemuitomaneiro",
-        email:"semideia@ohotmail.com",
-        password:"4352",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-},
-{
-        nome:"nomemaisquemaneiro",
-        email:"semideia2pontozero@hotmail.com",
-        password:"12345meia78-ta-na-hora-de-molhar-o-biscoito",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-},
-{       
-        nome:"nomenaomuitomaneiro",
-        email:"naotenhoideiaagora@hotmail.com",
-        password:"123807123807213897",
-        token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-}]
-
 const getUsers = () =>{
   
 }  
 
-export { getUsers, getUserAuthenticated };
+const postUser = async(user) =>{
+    try {
+        const responseOfApi = await fetch(url+ "/user", {
+        method:"POST",
+        headers: {'content-Type':'Aplication/json'},
+        body: JSON.stringify(user)
+        })
+        const userSave = await responseOfApi.json()
+        return userSave
+    } catch {
+        return null
+    }
+}
+
+export { getUsers, getUserAuthenticated, postUser };
 
 
 /*const getUserAuthenticated = (user) => {
